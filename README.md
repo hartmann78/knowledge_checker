@@ -109,6 +109,8 @@ Culture - Asked: 1, Correct: 0, Percentage: 0%
 For each topic, `Asked` is the total number of questions asked from that topic,
 `Correct` is the total number of questions answered correctly,
 and `Percentage` is the percentage of correct answers.
+All fractional numbers should be rounded to the nearest whole number.
+
 If no questions were asked from a topic, skip the topic.
 
 # Question Selection
@@ -181,8 +183,13 @@ You can use it for mapping model objects and DTOs.
 Implement the following strategy classes for question selection:
 - `FixedStrategy`
 - `SequentialStrategy`
-- `RandomSelectionStrategy`
-- `AdaptiveSelectionStrategy`
+- `RandomStrategy`
+- `AdaptiveStrategy`
+
+The first three strategies are straightforward to implement.
+
+Read details below for the `AdaptiveStrategy`.
+
 
 ## Adaptive Selection Strategy
 
