@@ -60,10 +60,11 @@ Example:
 ```
 
 - `lastAsked`: The time when the question was last asked.
-- `history`: An array of answers; `true` for correct, `false` for incorrect.
+- `history`: An array of answers; `true` for correct, `false` for incorrect. Append new answers to the end of the array.
 
 Time format:
 - ISO 8601, `YYYY-MM-DDThh:mm:ss`
+- For simplicity, time zone is ignored.
 
 # User Interface
 
@@ -107,9 +108,10 @@ Culture - Asked: 1, Correct: 0, Percentage: 0%
 ```
 
 For each topic, `Asked` is the total number of questions asked from that topic,
-`Correct` is the total number of questions answered correctly,
-and `Percentage` is the percentage of correct answers.
-All fractional numbers should be rounded to the nearest whole number.
+`Correct` is the total number of questions answered correctly.
+
+`Percentage` is calculated as the number of correct answers divided by the total number of answers.
+If the result is fractional, it must be rounded to the nearest whole number.
 
 If no questions were asked from a topic, skip the topic.
 
@@ -133,7 +135,7 @@ The weight is based on two factors: history and time.
 **History Weight Calculation**
 
 Prioritize questions the user struggled with in the past.
-Only the two most recent answers are considered.
+Only the 2 most recent answers are considered.
 
 - The weight is 0 by default.
 - For each **incorrect** answer in history, add 2 to the weight.
@@ -145,7 +147,7 @@ Examples:
 - `[false]` → 2
 - `[false, true]` → 1
 - `[false, false]` → 4
-- `[false, true, true, true]` → -2 (only the two most recent answers are considered)
+- `[false, true, true, true]` → -2 (only the 2 most recent answers are considered)
 
 **Time Weight Calculation**
 
@@ -181,10 +183,11 @@ Implement the `JsonPersistence` class to handle loading and saving the knowledge
 
 Use the `Jackson` library for JSON parsing, which is already included in the project Maven dependencies.
 Do not map model classes directly to JSON using Jackson annotations.
-Define **Data Transfer Object** classes instead.
+Define **Data Transfer Object** classes instead, and load data into them.
 
-Note: `ModelMapper` is also included as a dependency.
-You can use it for mapping model objects and DTOs.
+When DTOs are loaded, they should be mapped to the corresponding model classes.
+`ModelMapper`, which is already included as a dependency,
+can be used to perform the mapping between DTOs and model objects.
 
 ## Strategy Classes
 
@@ -201,10 +204,13 @@ Read details below for the `AdaptiveStrategy`.
 
 ## Adaptive Selection Strategy
 
-Implement the weight calculation for the adaptive selection strategy as described in **Weight Calculation for Adaptive Selection**.
+Implement the weight calculation for the adaptive selection strategy
+as described in **Weight Calculation for Adaptive Selection**.
 
 After calculating weights, sort questions by weight in descending order,
-take the top 5 questions, and select one randomly.
+take the **top 5 questions**, and select one randomly.
+
+Note: if the number of questions is less than 5, use all questions for random selection.
 
 ## Spring Framework
 
@@ -235,6 +241,7 @@ Requirements:
 Do not add additional dependencies to the project.
 Use only those already defined.
 
+
 # Testing
 
 The template project includes several JUnit test classes for testing application components:
@@ -257,3 +264,9 @@ Your application should pass all provided test cases.
 
 Passing all test cases does not guarantee full correctness.
 (For example, there are no test cases for weight calculation or the adaptive strategy.)
+
+
+# Engineering Excellence
+
+When you implement the application, apply software development and design best practices, such as:
+Single Responsibility Principle, Loosely Coupled Design, Clean code principles.
