@@ -164,6 +164,14 @@ Instructions for implementing the application:
 The application should use the model class `KnowledgeElement`, which is already defined in the project.
 You may add fields and methods as needed.
 
+The class includes **Lombok** annotations.
+
+If you are not familiar with Lombok, it is a Java library that helps reduce boilerplate code
+by generating common methods like getters, setters, constructors, and more at compile time using annotations.
+
+Here is a guide about it: https://auth0.com/blog/a-complete-guide-to-lombok/
+
+
 ## Persistence
 
 Implement the `JsonPersistence` class to handle loading and saving the knowledge bank to a JSON file.
