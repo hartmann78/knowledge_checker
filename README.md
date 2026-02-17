@@ -248,6 +248,10 @@ The template project includes several JUnit test classes for testing application
   - `FixedStrategyTest`
   - `SequentialStrategyTest`
 
+Acceptance by **Autocode** platform:
+- Your application must pass all provided test cases.
+- Run the test locally before you submit to Autocode to make sure everything works as expected.
+
 **Notes:**
 - The provided test cases do not cover all functionality.
   (For example, there are no test cases for saving data to JSON, weight calculation, or the adaptive strategy.)
@@ -257,9 +261,6 @@ The template project includes several JUnit test classes for testing application
 Restrictions:
 - Do not change the provided test classes. They will be used to evaluate your implementation.
 - Do not change the content of `test_data/questions.json`, as it is used in the tests.
-
-Acceptance by **Autocode** platform:
-- Your application must pass all provided test cases.
 
 # Engineering Excellence
 
