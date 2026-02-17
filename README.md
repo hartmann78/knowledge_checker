@@ -25,7 +25,7 @@ Here are the main steps from application start to stop:
    - Selects a question from the knowledge bank based on a strategy and presents it to the user.
    - The user inputs their answer.
    - The application checks if the answer is correct, provides feedback, and tracks the result for the question.
-3. The application proceeds to this step when the user decides to exit.
+3. When the user decides to exit, the application proceeds to the next step.
 4. The application prints the user's performance and saves the updated knowledge bank to the file.
 
 # Data Model
@@ -64,7 +64,7 @@ Example:
 
 Time format:
 - ISO 8601, `YYYY-MM-DDThh:mm:ss`
-- For simplicity, time zone is ignored.
+- For simplicity, the time zone is ignored.
 
 # User Interface
 
@@ -108,7 +108,7 @@ Culture - Asked: 1, Correct: 0, Percentage: 0%
 ```
 
 For each topic, `Asked` is the total number of questions asked from that topic,
-`Correct` is the total number of questions answered correctly.
+and `Correct` is the total number of questions answered correctly.
 
 `Percentage` is calculated as the number of correct answers divided by the total number of answers.
 If the result is fractional, it must be rounded to the nearest whole number.
@@ -173,7 +173,6 @@ by generating common methods like getters, setters, constructors, and more at co
 
 Here is a guide about it: https://auth0.com/blog/a-complete-guide-to-lombok/
 
-
 ## Persistence
 
 Implement the `JsonPersistence` class to handle loading and saving the knowledge bank to a JSON file.
@@ -199,8 +198,7 @@ Implement the following strategy classes for question selection:
 
 The first three strategies are straightforward to implement.
 
-Read details below for the `AdaptiveStrategy`.
-
+Read the details below for the `AdaptiveStrategy`.
 
 ## Adaptive Selection Strategy
 
@@ -210,7 +208,7 @@ as described in **Weight Calculation for Adaptive Selection**.
 After calculating weights, sort questions by weight in descending order,
 take the **top 5 questions**, and select one randomly.
 
-Note: if the number of questions is less than 5, use all questions for random selection.
+Note: If the number of questions is less than 5, use all questions for random selection.
 
 ## Spring Framework
 
@@ -241,7 +239,6 @@ Requirements:
 Do not add additional dependencies to the project.
 Use only those already defined.
 
-
 # Testing
 
 The template project includes several JUnit test classes for testing application components:
@@ -253,7 +250,7 @@ The template project includes several JUnit test classes for testing application
 
 **Notes:**
 - The provided test cases do not cover all functionality.
-  (For example, there are no test cases for saving data to json, weight calculation, or the adaptive strategy.)
+  (For example, there are no test cases for saving data to JSON, weight calculation, or the adaptive strategy.)
 - You may write additional test classes for other components as needed.
   Writing unit tests for the **weight calculation** is highly recommended.
 
@@ -264,8 +261,7 @@ Restrictions:
 Acceptance by **Autocode** platform:
 - Your application must pass all provided test cases.
 
-
 # Engineering Excellence
 
 When you implement the application, apply software development and design best practices, such as:
-Single Responsibility Principle, Loosely Coupled Design, Clean code principles.
+the Single Responsibility Principle, Loosely Coupled Design, and Clean Code principles.
