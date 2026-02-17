@@ -251,19 +251,18 @@ The template project includes several JUnit test classes for testing application
   - `FixedStrategyTest`
   - `SequentialStrategyTest`
 
-You may write additional test classes for other components as needed.
-
-**Note:**
-- Writing unit tests for the weight calculation and the adaptive strategy is highly recommended.
+**Notes:**
+- The provided test cases do not cover all functionality.
+  (For example, there are no test cases for saving data to json, weight calculation, or the adaptive strategy.)
+- You may write additional test classes for other components as needed.
+  Writing unit tests for the **weight calculation** is highly recommended.
 
 Restrictions:
 - Do not change the provided test classes. They will be used to evaluate your implementation.
-- Do not change the content of test_data/questions.json, as it is used in the tests.
+- Do not change the content of `test_data/questions.json`, as it is used in the tests.
 
-Your application should pass all provided test cases.
-
-Passing all test cases does not guarantee full correctness.
-(For example, there are no test cases for weight calculation or the adaptive strategy.)
+Acceptance by **Autocode** platform:
+- Your application must pass all provided test cases.
 
 
 # Engineering Excellence
